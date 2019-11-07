@@ -59,7 +59,9 @@ spec:
           securityContext:
             readOnlyRootFilesystem: {{ .Values.readOnlyRootFilesystem }}
             runAsNonRoot: {{ .Values.runAsNonRoot  }}
+            {{- if .Values.runAsUser }}
             runAsUser: {{ .Values.runAsUser }}
+            {{- end }}
           args:
 {{- if .Values.config }}
             - "--config.file=/config/blackbox.yaml"
